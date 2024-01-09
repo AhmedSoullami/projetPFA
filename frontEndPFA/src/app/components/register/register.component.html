@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="login-container">
+    <form class="login-form" [formGroup]="formRegister" (ngSubmit)="onRegister()">
+        <h2 class="underline mb-5">Créer un compte</h2>
+       
+        <input type="Prenom" id="Prenom" name="Prenom" placeholder="Prenom" formControlName="prenom">
+        <div *ngIf="formRegister.get('prenom')?.invalid && (formRegister.get('prenom')?.dirty || formRegister.get('prenom')?.touched)">
+            <div *ngIf="formRegister.get('prenom')?.hasError('required')" class="text-danger">
+              Le prenom est obligatoire
+            </div>
+          </div>
+        <input type="Nom" id="Nom" name="Nom" placeholder="Nom" formControlName="nom">
+        <div *ngIf="formRegister.get('nom')?.invalid && (formRegister.get('nom')?.dirty || formRegister.get('nom')?.touched)">
+            <div *ngIf="formRegister.get('nom')?.hasError('required')" class="text-danger">
+              Le nom est obligatoire
+            </div>
+          </div>
+        <input type="email" id="Email" name="Email" placeholder="Email" formControlName="email">
+        <div *ngIf="formRegister.get('email')?.invalid && (formRegister.get('email')?.dirty || formRegister.get('email')?.touched)">
+            <div *ngIf="formRegister.get('email')?.hasError('required')" class="text-danger">
+              Email est obligatoire
+            </div>
+          </div>
+        <input type="password" id="password" name="password" placeholder="Mot de passe" formControlName="password">
+        <div *ngIf="formRegister.get('password')?.invalid && (formRegister.get('password')?.dirty || formRegister.get('password')?.touched)">
+            <div *ngIf="formRegister.get('password')?.hasError('required')" class="text-danger">
+              le nom est obligatoire
+            </div>
+          </div>
+        <button  class="mb-4" type="submit">Créer</button>
+        <div class="text-center">
+            <a routerLink="/login" class="d-inline-block text-decoration-none" style="color: black;">Connexion</a>
+        </div>
+    </form>
+</div>

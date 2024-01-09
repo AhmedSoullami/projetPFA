@@ -1,0 +1,77 @@
+
+<app-navbar></app-navbar>
+
+<app-container></app-container>
+<br><br>
+<section class="bg-light">
+  <div class="container py-5">
+      <div class="row text-center py-3">
+          <div class="col-lg-6 m-auto">
+              <h1 class="h1">Nos Tapis</h1>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              </p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-12 col-md-4 mb-4" *ngFor="let t of productDetails">
+              <div class="card h-100">
+                  <a href="#">
+                      <img [src]="t.imageModels[0].url" class="card-img-top" alt="..." style="height:250px;">
+                  </a>
+                  <div class="card-body" >
+                      <ul class="list-unstyled d-flex justify-content-between">
+                          <li>
+                              <i class="text-warning fa fa-star"></i>
+                              <i class="text-warning fa fa-star"></i>
+                              <i class="text-warning fa fa-star"></i>
+                              <i class="text-muted fa fa-star"></i>
+                              <i class="text-muted fa fa-star"></i>
+                          </li>
+                          <li class="text-muted text-right">{{t.price}} DH</li>
+                      </ul>
+                      <a href="#" class="h4 text-decoration-none text-dark">{{t.description}}</a>
+                      
+                      <p class="text-muted">{{t.type}}</p>
+                      <div class="mt-2">
+                        <button type="button" mat-raised-button (click)="showDetails(t)" style="color: white;background-color: black;">Details</button> </div>
+                        
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<br>
+<br>
+
+
+<div>
+            <form style="width: 100%;height: 160px;background-color: #f8f4f4;">        
+                <div class="newsletter--form">
+                  <div class="input-group">
+                    <input style="width: 450px;margin-left: 320px;margin-top: 50px;" type="email" value="" placeholder="Inscrivez-vous" name="contact[email]" id="Email" class="input-group-field newsletter__input" autocorrect="off" autocapitalize="off" required>
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+                        <span class="newsletter__submit-text--large">S'inscrire</span>
+                        <span class="newsletter__submit-text--small">
+                          <span class="icon icon-arrow-right" aria-hidden="true"></span>
+                        </span>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </form>
+</div>
+<br>
+<br>
+<div class="underline"></div>
+<br>
+
+
+
+
+
+<app-footer></app-footer>
