@@ -7,4 +7,8 @@ import java.util.List;
 public interface ServiceUser {
     User registreUser(User user);
     List<User> listUsers(String roleName);
+
+    void deleteUserById(Long userId);
+
+    Long getUserCount();
 }

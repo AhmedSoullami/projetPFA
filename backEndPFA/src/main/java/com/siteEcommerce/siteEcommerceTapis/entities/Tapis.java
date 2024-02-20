@@ -28,5 +28,8 @@ public class Tapis {
     )
     private Set<ImageModel>imageModels;
     private User user;
+    @ManyToOne
+    @JoinColumn(name = "cart_id")  // This should match the column name in the Tapis table
+    private Cart cart;
 
 }

@@ -1,8 +1,31 @@
-<div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Home</div>
-    <div class="page__content shadow p-3 position-relative">
-      <div class="page__content-data position-absolute text-center">
-        Home Content Goes Here
-      </div>
-    </div>
+<!-- Utilisez les balises <i> pour Font Awesome et <mat-icon> pour Angular Material -->
+  <div class="container-fluid page">
+     
+    <div class="col-sm-8">
+      <h2 style="margin-top: 20px;margin-left: 70px;">Espace <b>Admin</b></h2>
   </div>
+    </div>
+    <div class="page__content shadow p-3 position-relative">
+      
+       
+      <div class="d-flex">
+        <div class="statistic bg-info text-white p-3 rounded" style="width: 340px; margin-left: 70px;margin-right: 90px;">
+          <mat-icon class="mr-2" style="margin-left: 140px;">people</mat-icon>
+          <p class="mb-0" style="margin-left: 110px;">Utilisateurs: {{ numberOfUsers }}</p>
+        </div>
+        <div class="statistic bg-success text-white p-3 rounded" style="width: 340px;">
+          <mat-icon class="mr-2" style="margin-left: 140px;">store</mat-icon>
+          <p class="mb-0" style="margin-left: 125px;">Tapis: {{ numberOfProducts }}</p>
+        </div>
+      </div>
+      <br>
+      
+      <canvas #chartCanvas style="width: 150px; height: 50px;"></canvas>
+
+      
+
+
+   
+   
+  </div>
+  

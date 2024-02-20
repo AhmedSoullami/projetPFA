@@ -5,8 +5,10 @@ import com.siteEcommerce.siteEcommerceTapis.entities.ImageModel;
 import com.siteEcommerce.siteEcommerceTapis.entities.Tapis;
 import com.siteEcommerce.siteEcommerceTapis.services.TapisImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +17,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -51,7 +54,7 @@ public class TapisController {
     public List<Tapis> getAllTapis(){
         return tapisImpl.getAll();
     }
-    //supprimer par id tapis
+
     @DeleteMapping("/supprimerTapis/{id}")
     public void deleteTapisByIdTapis(@PathVariable Long id){
         tapisImpl.deleteTapis(id);
@@ -61,8 +64,30 @@ public class TapisController {
         return tapisImpl.getTapis(id);
     }
 
+    @GetMapping("/byType/{type}")
+    public List<Tapis> getTapisByType(@PathVariable String type) {
+        return tapisImpl.getTapisByType(type);
+    }
 
+    @GetMapping("/tapisCount")
+    public ResponseEntity<Long> getTapisCount() {
+        try {
+            Long tapisCount = tapisImpl.getTapisCount();
+            return ResponseEntity.ok(tapisCount);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(-1L); // Gestion de l'erreur
+        }
+    }
 
+    @GetMapping("/tapisTypeCounts")
+    public ResponseEntity<Map<String, Long>> getTapisTypeCounts() {
+        try {
+            Map<String, Long> typeCounts = tapisImpl.getTapisTypeCounts();
+            return ResponseEntity.ok(typeCounts);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
 
 
 }

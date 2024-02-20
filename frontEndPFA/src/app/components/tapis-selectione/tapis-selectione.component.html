@@ -1,0 +1,39 @@
+<style>
+    .no-scroll {
+      overflow: hidden;
+    }
+  </style>
+  
+  <app-navbar></app-navbar>
+  <div class="no-scroll">
+    <h2 style="margin-left: 50%;" class="underline">Tapis {{ selectedType }}</h2>
+    <div class="row">
+      <div class="col-10 col-md-4 mb-4" *ngFor="let t of productDetails">
+        <div class="card h-100">
+          <a href="#">
+            <img [src]="t.imageModels[0].url" class="card-img-top" alt="..." style="height:250px;">
+          </a>
+          <div class="card-body">
+            <ul class="list-unstyled d-flex justify-content-between">
+              <li>
+                <i class="text-warning fa fa-star"></i>
+                <i class="text-warning fa fa-star"></i>
+                <i class="text-warning fa fa-star"></i>
+                <i class="text-muted fa fa-star"></i>
+                <i class="text-muted fa fa-star"></i>
+              </li>
+              <li class="text-muted text-right">{{t.price}} DH</li>
+            </ul>
+            <a href="#" class="h4 text-decoration-none text-dark">{{t.description}}</a>
+            <p class="text-muted">{{t.type}}</p>
+            <div class="mt-2">
+              <button type="button" mat-raised-button (click)="showDetails(t)" style="color: white;background-color: black;">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br><br>
+  <app-footer></app-footer>
+  

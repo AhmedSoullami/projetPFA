@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+
+
+  <div class="container-fluid mt-2">
+    <h2 class="mb-5 text-center"> Shopping Cart</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="table-responsive mx-auto">
+          <table id="myTable" class="table">
+            <thead>
+              <tr>
+                <th>Tapis</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Quantite</th>
+                <th>Prix</th>
+                
+                <th class="text-right">
+                  <span id="amount" class="amount">Amount</span>
+                </th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let tapis of productDetails">
+                <td>
+                  <div class="tapis-img">
+                    <div class="img-tapis">
+                      <img [src]="tapis.imageModels[0].url" class="img-fluid product-zoom-image" alt="Product Image" style="max-width: 100px; max-height: 100px;">
+
+                    </div>
+                  </div>
+                </td>
+                <td>{{ tapis.type }}</td>
+                <td>{{tapis.description}}</td>
+                <td>
+                  <div class="button-container">
+                    <button class="cart-qty-plus" type="button" (click)="increaseQuantity(tapis)">+</button>
+                    <input type="text" name="qty"  min="0" class="qty form-control" [value]="tapis.qty || 0">
+                    <button class="cart-qty-minus" type="button" (click)="decreaseQuantity(tapis)">-</button>
+                  </div>
+                </td>
+                <td>
+                  <input type="text" value="{{ tapis.price }}" class="price form-control"  disabled>
+                </td>
+                <td align="right"> <span id="amount" class="amount">{{ tapis.qty * tapis.price || 0 }} </span></td>
+                <td>
+                  <button mat-icon-button style="color: red; margin-right: 20px; border: none;background: none;" (click)="removeTapisFromCart(tapis)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4"></td>
+                <td align="right">
+                  <strong>TOTAL =  <span id="total" class="total">{{calculateTotalPrice()}} DH</span></strong>
+                </td>
+                
+                
+                
+              </tr>
+            </tfoot>
+            
+          </table>
+          <br>
+          <em class="mb-3">Les codes promo, les frais d'envoi et </em> <br>
+          <em class="mb-3">les taxes seront ajoutés à la caisse.</em>
+          
+         
+        </div>
+        <button (click)="topayement()" type="submit" name="checkout" style="background-color: black;color: white;width: 180px;height: 45px;margin-top: 10px;border-color: black;">
+          Procéder au paiement<span class="icon icon-arrow-right"></span>
+       </button>
+       
+      </div>
+    </div>
+  </div>
+  <br><br><br>
+  <app-footer></app-footer>
+  

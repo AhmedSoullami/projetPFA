@@ -71,6 +71,27 @@ public class UserController {
      public List<User>userList(){
      return userIpml.listUsers("user");
      }
+     @DeleteMapping("/users/{userId}")
+     @PreAuthorize("hasRole('admin')")
+     public ResponseEntity<?> deleteUserById(@PathVariable Long userId) {
+          try {
+               // Votre logique de suppression d'utilisateur ici
+               userIpml.deleteUserById(userId);
+
+               return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+          } catch (Exception e) {
+               return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete user: " + e.getMessage());
+          }
+     }
+     @GetMapping("/userCount")
+     public ResponseEntity<Long> getUserCount() {
+          try {
+               Long userCount = userIpml.getUserCount();
+               return ResponseEntity.ok(userCount);
+          } catch (Exception e) {
+               return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(-1L); // Gestion de l'erreur
+          }
+     }
 
 
 }

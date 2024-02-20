@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<h2 class="contact">Contact</h2>
+<div class="madiv mb-3">
+    <form >
+        <input type="email" placeholder="E-mail ou numéro de portable" style="width:500px;height: 40px;">
+    </form>
+</div>
+<h2 class="Paiement">Paiement</h2>
+
+<div class="payment-options">
+    <div class="payment-option-container">
+      <input type="radio" id="creditCard" name="paymentMethod" [(ngModel)]="selectedPaymentMethod" value="creditCard">
+      <label for="creditCard">Carte de crédit</label>
+      
+        <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/0169695890db3db16bfe.svg" alt="VISA" style="margin-left: 53%;">
+        <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/ae9ceec48b1dc489596c.svg" alt="MASTERCARD">
+        <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/f11b90c2972f3811f2d5.svg" alt="AMEX">
+    </div>
+    <div *ngIf="selectedPaymentMethod === 'creditCard'">
+        <form class="myPaiment" [formGroup]="paymentForm">
+            <div class="form-group mb-2">
+                <input formControlName="cardNumber"  type="text" id="cardNumber" class="form-control" placeholder="Numéro de carte" >
+            </div>
+            <div class="form-group mb-2">
+                <input formControlName="cardName" type="text" id="cardName" class="form-control" placeholder="Nom de la carte" >
+            </div>
+
+            <div class="form-group mb-2">
+                <input formControlName="expirationDate" type="text" id="expirationDate" class="form-control" placeholder="MM/YY" style="display: inline-block; width: calc(49.5% - 15px);">
+                <input formControlName="securityCode" type="text" id="securityCode" class="form-control" placeholder="Code de securité" style="display: inline-block; width: calc(49.5% - 15px);">
+            </div>
+            
+            
+        </form>
+    </div>
+    <div class="payment-option-container mb-2">
+        <input type="radio" id="paypal" name="paymentMethod" [(ngModel)]="selectedPaymentMethod" value="paypal">
+        <label for="paypal">PayPal</label>
+        <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png" alt="PayPal Logo" style="height: 24px;width: 100px;margin-left: 66%;">
+    </div>
+  </div>
+  <h2 class="SommaireCommande">Sommaire de la commande</h2>
+  
+  <h4 class="qt">Total:<span style="margin-left: 46%;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">{{totalAmount}} DH</span></h4>
+
+  <button type="button" class="btn btn-outline-dark" (click)="makePayment()"
+  
+  style="margin-left: 33%; margin-top: 4px; width: 496px; height: 45px;">
+Payer maintenant
+</button>
+   
+
+
+  <br><br><br><br><br>
+<app-footer></app-footer>
+
+  

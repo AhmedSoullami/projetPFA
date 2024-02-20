@@ -52,7 +52,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        ((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)http.authorizeRequests().antMatchers(new String[]{"/login","/register","/users","/ajouterTapis","/getAllTapis","/supprimerTapis/{id}","/getTapisByIdTapis/{id}"})).permitAll().anyRequest()).authenticated();
+        ((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)http.authorizeRequests().antMatchers(new String[]{"/login","/register","/users","/ajouterTapis","/getAllTapis","/supprimerTapis/{id}","/getTapisByIdTapis/{id}","/addCart","/getCart/{userId}","/byType/{type}","/payments/{userId}","/userCount","/tapisCount","/tapisTypeCounts","/removeTapis/{userId}/{tapisId}","/addPaiment","/users/{userId}"})).permitAll().anyRequest()).authenticated();
         http.exceptionHandling().authenticationEntryPoint((request, response, ex) -> {
             response.sendError(401, ex.getMessage());
         });

@@ -1,0 +1,75 @@
+
+.contact{
+    margin-left: 33%;
+}
+.madiv{
+    margin-left: 33%;
+}
+.Paiement{
+    margin-left: 33%;
+}
+.SommaireCommande{
+   
+    margin-left: 33%;
+}
+.qt{
+    margin-left: 33%;
+}
+.payment-option-container {
+    border:  1px solid ;
+    padding: 10px;
+    margin-left: 33%;
+    display: flex; 
+    align-items: center; 
+    margin-right: 26.3%;
+    border-radius: 2%;
+  }
+
+.myPaiment{
+    border: 1px solid;
+    margin-left: 33%;
+    margin-right: 26.3%;
+}
+#cardNumber{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 480px;
+    margin-right: 10px;
+    border:  1px solid ;
+    padding: 10px;
+}
+#cardNumber{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 480px;
+    margin-right: 10px;
+    border:  1px solid ;
+    padding: 10px;
+}
+#expirationDate{
+   
+    border:  1px solid ;
+    padding: 10px;
+   
+    margin-right: 20px;
+    margin-left: 10px;
+}
+#securityCode{
+
+    border:  1px solid ;
+    padding: 10px; 
+   
+}
+#cardName{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 480px;
+    margin-right: 10px;
+    border:  1px solid ;
+    padding: 10px;
+
+}
+
+
+  
+  

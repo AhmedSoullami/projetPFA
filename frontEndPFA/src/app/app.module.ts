@@ -21,7 +21,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AjouterTapisComponent } from './components/ajouter-tapis/ajouter-tapis.component';
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
 import { TapisComponent } from './components/tapis/tapis.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { AdminpageComponent } from './components/adminpage/adminpage.component';
 import { ClientComponent } from './components/client/client.component';
@@ -37,6 +37,13 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContainerComponent } from './components/container/container.component';
 import { TapisDetailsComponent } from './components/tapis-details/tapis-details.component';
+import { CartComponent } from './components/cart/cart.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { PayementComponent } from './components/payement/payement.component';
+import { TapisSelectioneComponent } from './components/tapis-selectione/tapis-selectione.component';
+import { ProposComponent } from './components/propos/propos.component';
+
 
 const routes:Routes=[
   {path:'',component:NavbarComponent},
@@ -50,13 +57,17 @@ const routes:Routes=[
   {path:'clients',component:ClientsComponent},
   {path:'statistiques',component:StatistiquesComponent},
   {path:'Ajoutertapis',component:AjouterTapisComponent},
+  {path:'propos',component:ProposComponent},
   {path:'editTapis',component:EditTapisComponent,
     resolve:{
       product:TapisResoleService
     }
   },
   {path:'home',component:HomeComponent},
-  {path:'detailsTapis',component:TapisDetailsComponent,resolve:{product:TapisResoleService}}
+  {path:'detailsTapis',component:TapisDetailsComponent,resolve:{product:TapisResoleService}},
+  {path:'cart',component:CartComponent},
+  {path:'payement',component:PayementComponent},
+  {path:'tapisSelectione/:type',component:TapisSelectioneComponent}
 ]
 @NgModule({
   declarations: [
@@ -79,6 +90,10 @@ const routes:Routes=[
     FooterComponent,
     ContainerComponent,
     TapisDetailsComponent,
+    CartComponent,
+    PayementComponent,
+    TapisSelectioneComponent,
+    ProposComponent,
   
     
   ],
@@ -105,12 +120,18 @@ const routes:Routes=[
     MatGridListModule,
     MatGridListModule,
     NgbModule,
-   NgbCarouselModule    
+   NgbCarouselModule  ,
+   MatPaginatorModule  ,
+   MatTableModule,
+   MatMenuModule,
+   MatIconModule,
+   FormsModule
    
     
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Tapis } from '../model/tapis.model';
 import { FileHandle } from '../model/file-handle.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +62,14 @@ export class TapisService {
   }
   getTapisByIdTapis(tapisId:number){
     return this.httpClient.get<Tapis>("http://localhost:9090/getTapisByIdTapis/"+tapisId)
+  }
+  getTapisByType(type: string): Observable<any> {
+    return this.httpClient.get<any>(`http://localhost:9090/byType/${type}`);
+  }
+  getCountTapis(){
+    return this.httpClient.get("http://localhost:9090/tapisCount")
+  }
+  getTapisTypeCounts(): Observable<any> {
+    return this.httpClient.get<any>("http://localhost:9090/tapisTypeCounts");
   }
 }  

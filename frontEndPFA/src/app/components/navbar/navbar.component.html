@@ -1,22 +1,42 @@
 <nav class="navbar">
+  <img src="../../../assets/logoPFA.jpeg" style="height: 140px;width: 140px;margin-right: 130px;margin-top: -25px;">
+  <ul>
+    <li><a routerLink="/home">HOME</a></li>
+    <li><a routerLink="/propos">A PROPOS</a></li>
+    <li><a routerLink="#products">NOS PRODUITS</a>
+      <ul class="dropdown">
+        <li><a routerLink="/tapisSelectione/Azilal">Tapis Azilal</a></li>
+        <li><a routerLink="/tapisSelectione/Boujad">Tapis Boujad</a></li>
+        <li><a routerLink="/tapisSelectione/Boucherouite">Tapis Boucherouite</a></li>
+        <li><a routerLink="/tapisSelectione/BeniOurain">Tapis Beni ourain</a></li>
+        <li><a routerLink="/tapisSelectione/Kilim">Tapis Kilim</a></li>
+        <li><a routerLink="/tapisSelectione/Taznakht">Tapis Taznakht</a></li>
+        <li><a routerLink="/tapisSelectione/Zanafi">Tapis Zanafi</a></li>
+      </ul>
+    </li>
     
-    <img src="../../../assets/A.png" style="height: 140px;width: 140px;margin-right: 130px;">
-    <ul>
-        <li s><a href="/home">HOME</a></li>
-        <li><a href="#about">A PROPOS</a></li>
-        <li><a href="#products">NOS PRODUITS</a></li>
-        <li><a href="#follow">SUIVEZ-NOUS</a></li>
-        <li>
-            <a routerLink="/login">
-            <img src="../../../assets/utilisateur.png" style="height: 25px;width: 22px;margin-top: -10px;">
-        </a></li>
-        <li>
-            <a href="#follow">
-            <img src="../../../assets/recherche.png" style="height: 25px;width: 22px;margin-top: -10px;">
-        </a>
-       </li>
-        <li><a href="#follow">
-            <img src="../../../assets/panier.png" style="height: 25px;width: 22px;margin-top: -10px;">
-        </a></li>
+    <li><a routerLink="#follow">SUIVEZ-NOUS</a>
+    <ul class="dropdown2">
+        <li><a routerLink="/">Facebook</a> </li>
+        <li><a routerLink="/">Instagram</a> </li>
     </ul>
+    </li>
+    
+    <li>
+      <a routerLink="/login">
+        <img src="../../../assets/utilisateur.png" style="height: 25px;width: 22px;margin-top: -10px;">
+      </a>
+    </li>
+    <li>
+      <a routerLink="#follow">
+        <img src="../../../assets/recherche.png" style="height: 25px;width: 22px;margin-top: -10px;">
+      </a>
+    </li>
+    <li>
+      <a routerLink="/cart">
+        <img src="../../../assets/panier.png" style="height: 25px;width: 22px;margin-top: -10px;">
+        <span style="display: flex;height: 15px;width: 15px;background-color: burlywood;justify-content: center;align-items: center;color: white;border-radius: 50%;position: absolute;top: 48%;right: -20px;"></span>
+      </a>
+    </li>
+  </ul>
 </nav>

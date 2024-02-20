@@ -20,18 +20,13 @@ public class User implements UserDetails {
     private String nom;
     private String email;
     private String password;
-
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-
-    @JoinTable(name = "USER_ROLE",
-            joinColumns = {
-            @JoinColumn(name = "USER_ID")
-            },
-            inverseJoinColumns = {
-            @JoinColumn(name = "ROLE_ID")
-            }
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "USER_ROLE",
+            joinColumns = @JoinColumn(name = "USER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ROLE_ID")
     )
-    private Set<Role>roles;
+    private Set<Role> roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

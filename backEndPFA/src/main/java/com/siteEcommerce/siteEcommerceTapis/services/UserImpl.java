@@ -7,6 +7,7 @@ import com.siteEcommerce.siteEcommerceTapis.repositories.RepoUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,6 +18,7 @@ public class UserImpl implements ServiceUser{
     private RepoUser repoUser;
     @Autowired
     private RepoRole repoRole;
+
     @Override
     public User registreUser(User user) {
         return repoUser.save(user);
@@ -27,7 +29,22 @@ public class UserImpl implements ServiceUser{
        return repoUser.findByRoles_RoleName(roleName);
     }
 
+    @Override
+    public void deleteUserById(Long userId) {
+        User user = repoUser.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
 
+        // Supprimer manuellement les rôles associés
+        user.getRoles().clear();
+
+        // Supprimer l'utilisateur
+        repoUser.delete(user);
+    }
+
+    @Override
+    public Long getUserCount() {
+        return repoUser.count();
+    }
 
 
 }

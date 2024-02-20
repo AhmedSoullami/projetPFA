@@ -48,5 +48,6 @@ export class HomeComponent implements OnInit{
     this.router.navigateByUrl('/detailsTapis')
     localStorage.setItem('idTapis',tapis.id)
   }
+ 
 
 }

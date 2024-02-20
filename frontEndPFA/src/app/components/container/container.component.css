@@ -27,6 +27,8 @@
   
   .underline {
     position: relative;
+    width: 375px;
+    align-items: center;
 }
 
 .underline:after {
@@ -34,7 +36,7 @@
     align-items: center;
     content: "";
     position: absolute;
-    margin-left: -370px;
+    margin-left: -305px;
     height: 2px;
     width: 375px; 
     background-color: black; 

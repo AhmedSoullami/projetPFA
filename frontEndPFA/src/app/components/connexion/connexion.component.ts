@@ -10,6 +10,7 @@ import { jwtDecode } from 'jwt-decode';
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
+  isLoggedIn = false;
    formLogin!:FormGroup;
    constructor(private router:Router,private loginservice:LoginService,private fb:FormBuilder){}
    ngOnInit(): void {
@@ -18,36 +19,46 @@ export class ConnexionComponent implements OnInit {
         password:['',Validators.required]
       })
    }
-   connexion(){
-    if(this.formLogin.valid){
-      let email=this.formLogin.value.email;
-      let password=this.formLogin.value.password;
-      this.loginservice.login(email,password).subscribe({
-        next:(data:any)=>{
+   connexion() {
+    if (this.formLogin.valid) {
+      let email = this.formLogin.value.email;
+      let password = this.formLogin.value.password;
+  
+      this.loginservice.login(email, password).subscribe({
+        next: (data: any) => {
           console.log(data);
           const decodeToken: any = jwtDecode(data.accessToken);
-          if (decodeToken && decodeToken.sub){
-            const userId=decodeToken.sub.split(',')[0];
-            const roleUser=decodeToken.role.map((role: any) => role.roleName);
-            
-          console.log(userId);
-          console.log(roleUser);
-          if(roleUser=="admin"){
-            console.log("voues etes admin")
-            this.router.navigateByUrl("/admin")
+          if (decodeToken && decodeToken.sub) {
+            const userId = decodeToken.sub.split(',')[0];
+            const roles = decodeToken.role.map((role: any) => role.roleName);
+  
+            console.log(userId);
+            console.log(roles);
+  
+            if (roles.includes("admin")) {
+              console.log("Vous êtes admin");
+              this.router.navigateByUrl("/admin");
+            }
+  
+            if (roles.includes("user")) {
+              console.log("Vous êtes client");
+              this.isLoggedIn = true;
+              if(this.isLoggedIn==true){
+                localStorage.setItem('islogin',this.isLoggedIn.toString())
+                localStorage.setItem('idclient',userId)
+                console.log(this.isLoggedIn)
+              }
+              this.router.navigateByUrl("/home");
+
+             
+            }
           }
-          if(roleUser=="user"){
-            console.log("voues etes client")
-            this.router.navigateByUrl("/client")
-          }
-          }
-          
-            },
-        error:error=>{
-          console.log(error)
+        },
+        error: (error) => {
+          console.log(error);
         }
       });
     }
-
-   }
+  }
+  
 }
